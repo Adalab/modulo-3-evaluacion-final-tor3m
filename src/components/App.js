@@ -5,6 +5,7 @@ import CharacterList from "./CharacterList";
 import CharacterCard from "./CharacterCard";
 import CharacterDetail from "./CharacterDetail";
 import getDataFromApi from "../services/getDataFromApi";
+import logo from "../images/logo.png";
 
 //console.log(getDataFromApi()); Este console.log devuelve una promesa
 
@@ -15,7 +16,8 @@ function App() {
 return (
     <div className="App">
       <main>
-        HELLO WORLDDD!
+        <img src={logo} alt="RickandMorty" />
+        <p>HELLO WORLDDD!</p>
       <FilterByName/>
       <CharacterList/>
       <CharacterCard/>
