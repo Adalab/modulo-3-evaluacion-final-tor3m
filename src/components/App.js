@@ -8,7 +8,6 @@ import Filters from "./Filters";
 import CharacterDetail from "./CharacterDetail";
 // import ls from '../services/local-storage';
 
-//console.log(getDataFromApi()); Este console.log devuelve una promesa
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -16,9 +15,14 @@ function App() {
   const [filterSpecie, setFilterSpecie] = useState("");
 
   useEffect(() => {
-    getDataFromApi().then((data) => {
-      setCharacters(data);
-    });
+    if (characters.length === 0) {
+      getDataFromApi().then((data) => {
+        const orderAlpha = data.sort((a, b) =>
+          a.name > b.name ? 1 : a.name < b.name ? -1 : 0
+        );
+        setCharacters(data);
+      });
+    }
   }, []);
 
   const handleFilter = (data) => {
@@ -39,25 +43,25 @@ function App() {
         .includes(filterSpecie.toLowerCase());
     });
 
-    const renderCharacterDetail = props => {
-    const routeCharacterId = props.match.params.characterId;
-    const foundCharacter = characters.find(character => {
+  const renderCharacterDetail = (props) => {
+    const routeCharacterId = parseInt(props.match.params.characterId);
+    const foundCharacter = characters.find((character) => {
       return character.id === routeCharacterId;
     });
-    // console.log('Router props', props.match.params.characterId, foundCharacter);
+    console.log('Router props', props.match.params.characterId, foundCharacter);
     if (foundCharacter !== undefined) {
-      return <characterDetail character={foundCharacter} />;
+      return <CharacterDetail character={foundCharacter} />;
     } else {
       return <p>Personaje no encontrada</p>;
     }
   };
 
   return (
-    <div className="App">
-      <h1 className="title">
-        <img className="title__image" src={logo} alt="RickandMorty" />
-      </h1>
-      <Switch>
+    <Switch>
+      <div className="App">
+        <h1 className="title">
+          <img className="title__image" src={logo} alt="RickandMorty" />
+        </h1>
         <Route exact path="/">
           <Filters
             filterName={filterName}
@@ -66,9 +70,9 @@ function App() {
           />
           <CharacterList characters={filteredCharacters} />
         </Route>
-        <Route path="/user/:userId" render={renderCharacterDetail} />
-      </Switch>
-    </div>
+        <Route path="/character/:characterId" render={renderCharacterDetail} />
+      </div>
+    </Switch>
   );
 }
 

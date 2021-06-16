@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -12,7 +13,7 @@ function CharacterDetail(props) {
           <li>Status: {props.character.status}</li>
           <li>Species: {props.character.species}</li>
           <li>Origin: {props.character.origin}</li>
-          <li>Episodes: {props.character.episodes}</li>
+          <li>Episodes: {props.character.episode}</li>
         </ul>
       </section>
     </div>

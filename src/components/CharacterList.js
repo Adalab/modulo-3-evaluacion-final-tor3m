@@ -3,7 +3,7 @@ import CharacterCard from "./CharacterCard";
 function CharacterList(props) {
   const characterElements = props.characters.map((character) => {
     return (
-      <li key={character.id}>
+      <li className="list" key={character.id}>
         <CharacterCard character={character} />
       </li>
     );
@@ -12,6 +12,7 @@ function CharacterList(props) {
   return (
     <section>
       <ul> {characterElements}</ul>
+      
     </section>
   );
 }
