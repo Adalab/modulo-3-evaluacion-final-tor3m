@@ -1,12 +1,13 @@
-
-
-function CharacterCard() {
+function CharacterCard(props) {
   return (
     <div className="App">
-      <p>I'M</p>
+    
+        <img src={props.character.image} alt="" />
+        <h3>{props.character.name}</h3>
+        <p>{props.character.species}</p>
+     
     </div>
   );
 }
 
 export default CharacterCard;
-;

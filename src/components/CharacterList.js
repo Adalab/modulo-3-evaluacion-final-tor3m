@@ -1,9 +1,18 @@
+import CharacterCard from "./CharacterCard";
 
-function CharacterList() {
+function CharacterList(props) {
+  const characterElements = props.characters.map((character) => {
+    return (
+      <li key={character.id}>
+        <CharacterCard character={character} />
+      </li>
+    );
+  });
+
   return (
-    <div className="App">
-      <p> WORLDD!</p>
-    </div>
+    <section>
+      <ul> {characterElements}</ul>
+    </section>
   );
 }
 
