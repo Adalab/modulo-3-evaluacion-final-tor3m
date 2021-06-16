@@ -10,7 +10,7 @@ function FilterByName(props) {
 
   return (
     <>
-      <label htmlFor="name">
+      <label className="" htmlFor="name">
         <input
           className="input-text-name"
           type="text"

@@ -10,7 +10,7 @@ function FilterBySpecies(props) {
 
   return (
     <>
-      <label htmlFor="species">
+      <label className="" htmlFor="species">
         <input
           className="input-text-species"
           type="text"

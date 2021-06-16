@@ -5,7 +5,7 @@ import FilterBySpecies from "./FilterBySpecies";
 const Filters = (props) => {
   return (
     <section>
-      <form>
+      <form className="">
         <FilterByName
           filterName={props.filterName}
           handleFilter={props.handleFilter}

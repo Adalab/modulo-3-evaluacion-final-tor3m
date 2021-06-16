@@ -11,8 +11,7 @@ function CharacterList(props) {
 
   return (
     <section>
-      <ul> {characterElements}</ul>
-      
+      <ul className=""> {characterElements}</ul> 
     </section>
   );
 }

@@ -6,13 +6,12 @@ import logo from "../images/logo.png";
 import CharacterList from "./CharacterList";
 import Filters from "./Filters";
 import CharacterDetail from "./CharacterDetail";
-// import ls from '../services/local-storage';
-
+import ls from "../services/localStorage";
 
 function App() {
-  const [characters, setCharacters] = useState([]);
-  const [filterName, setFilterName] = useState("");
-  const [filterSpecie, setFilterSpecie] = useState("");
+  const [characters, setCharacters] = useState(ls.get("characters", []));
+  const [filterName, setFilterName] = useState(ls.get("filterName", ""));
+  const [filterSpecie, setFilterSpecie] = useState(ls.get("filterSpecie", ""));
 
   useEffect(() => {
     if (characters.length === 0) {
@@ -24,6 +23,16 @@ function App() {
       });
     }
   }, []);
+
+  useEffect(() => {
+    ls.set("characters", characters);
+  }, [characters]);
+
+  useEffect(() => {
+    ls.set("characters", characters);
+    ls.set("filterName", filterName);
+    ls.set("filterSpecie", filterSpecie);
+  }, [characters, filterName, filterSpecie]);
 
   const handleFilter = (data) => {
     if (data.key === "name") {
@@ -48,7 +57,7 @@ function App() {
     const foundCharacter = characters.find((character) => {
       return character.id === routeCharacterId;
     });
-    console.log('Router props', props.match.params.characterId, foundCharacter);
+    console.log("Router props", props.match.params.characterId, foundCharacter);
     if (foundCharacter !== undefined) {
       return <CharacterDetail character={foundCharacter} />;
     } else {
@@ -57,11 +66,11 @@ function App() {
   };
 
   return (
-    <Switch>
-      <div className="App">
-        <h1 className="title">
-          <img className="title__image" src={logo} alt="RickandMorty" />
-        </h1>
+    <div className="">
+      <h1 className="title">
+        <img className="title__image" src={logo} alt="RickandMorty" />
+      </h1>
+      <Switch>
         <Route exact path="/">
           <Filters
             filterName={filterName}
@@ -71,8 +80,8 @@ function App() {
           <CharacterList characters={filteredCharacters} />
         </Route>
         <Route path="/character/:characterId" render={renderCharacterDetail} />
-      </div>
-    </Switch>
+      </Switch>
+    </div>
   );
 }
 

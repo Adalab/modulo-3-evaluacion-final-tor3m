@@ -8,7 +8,7 @@ function CharacterDetail(props) {
       <Link to="/">Volver al inicio</Link>
       <section>
         <img className="" src={props.character.image} alt="" />
-        <h4 className="">{props.character.name}</h4>
+        <h3 className="">{props.character.name}</h3>
         <ul className="">
           <li>Status: {props.character.status}</li>
           <li>Species: {props.character.species}</li>
