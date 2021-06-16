@@ -1,22 +1,22 @@
 import React from 'react';
 
-function FilterByName(props) {
+function FilterBySpecies(props) {
   const handleChange = (ev) => {
     props.handleFilter({
       value: ev.target.value,
-      key: "name",
+      key: "species",
     });
   };
 
   return (
     <>
-      <label htmlFor="name">
+      <label htmlFor="species">
         <input
-          className="input-text-name"
+          className="input-text-species"
           type="text"
-          name="name"
-          id="name"
-          value={props.filterName}
+          name="species"
+          id="species"
+          value={props.filterSpecie}
           onChange={handleChange}
         />
       </label>
@@ -24,4 +24,4 @@ function FilterByName(props) {
   );
 }
 
-export default FilterByName;
+export default FilterBySpecies;
