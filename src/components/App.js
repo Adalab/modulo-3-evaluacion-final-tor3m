@@ -2,16 +2,17 @@ import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import getDataFromApi from "../services/getDataFromApi";
 import "../stylesheets/App.scss";
-import logo from "../images/logo.png";
-import CharacterList from "./CharacterList";
-import Filters from "./Filters";
+// import CharacterList from "./CharacterList";
+// import Filters from "./Filters";
+import Header from "./Header";
+import Main from "./Main";
 import CharacterDetail from "./CharacterDetail";
 import ls from "../services/localStorage";
 
 function App() {
   const [characters, setCharacters] = useState(ls.get("characters", []));
   const [filterName, setFilterName] = useState(ls.get("filterName", ""));
-  const [filterSpecie, setFilterSpecie] = useState(ls.get("filterSpecie", ""));
+  const [filterSpecie, setFilterSpecie] = useState(ls.get("filterSpecie", "")); //OJO
 
   useEffect(() => {
     if (characters.length === 0) {
@@ -25,11 +26,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    ls.set("characters", characters);
-  }, [characters]);
-
-  useEffect(() => {
-    ls.set("characters", characters);
+    ls.set("characters", characters); //OJO
     ls.set("filterName", filterName);
     ls.set("filterSpecie", filterSpecie);
   }, [characters, filterName, filterSpecie]);
@@ -66,22 +63,23 @@ function App() {
   };
 
   return (
-    <div className="">
-      <h1 className="title">
-        <img className="title__image" src={logo} alt="RickandMorty" />
-      </h1>
+    // <main className="">
+    //   <h1 className="title">
+    //     <img className="title__image" src={logo} alt="RickandMorty" />
+    //   </h1>
       <Switch>
         <Route exact path="/">
-          <Filters
-            filterName={filterName}
-            filterSpecie={filterSpecie}
-            handleFilter={handleFilter}
+          <Header/>
+          <Main
+              filterName={filterName}
+              filterSpecie={filterSpecie}
+              handleFilter={handleFilter}
+              characters={filteredCharacters}
           />
-          <CharacterList characters={filteredCharacters} />
         </Route>
         <Route path="/character/:characterId" render={renderCharacterDetail} />
       </Switch>
-    </div>
+    // </main>
   );
 }
 
