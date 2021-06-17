@@ -8,6 +8,7 @@ import Header from "./Header";
 import Main from "./Main";
 import CharacterDetail from "./CharacterDetail";
 import ls from "../services/localStorage";
+import Footer from "./Footer";
 
 function App() {
   const [characters, setCharacters] = useState(ls.get("characters", []));
@@ -63,24 +64,39 @@ function App() {
   };
 
   return (
-    // <main className="">
-    //   <h1 className="title">
-    //     <img className="title__image" src={logo} alt="RickandMorty" />
-    //   </h1>
+    <div>
+      <Header />
       <Switch>
         <Route exact path="/">
-          <Header/>
           <Main
-              filterName={filterName}
-              filterSpecie={filterSpecie}
-              handleFilter={handleFilter}
-              characters={filteredCharacters}
+            filterName={filterName}
+            filterSpecie={filterSpecie}
+            handleFilter={handleFilter}
+            characters={filteredCharacters}
           />
         </Route>
         <Route path="/character/:characterId" render={renderCharacterDetail} />
       </Switch>
-    // </main>
+
+      <Footer />
+    </div>
   );
+
+  // return (
+  //   <Switch>
+  //     <Route exact path="/">
+  //       <Header />
+  //       <Main
+  //         filterName={filterName}
+  //         filterSpecie={filterSpecie}
+  //         handleFilter={handleFilter}
+  //         characters={filteredCharacters}
+  //       />
+  //       <Footer />
+  //     </Route>
+  //     <Route path="/character/:characterId" render={renderCharacterDetail} />
+  //   </Switch>
+  // );
 }
 
 export default App;

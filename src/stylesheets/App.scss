@@ -1,15 +1,119 @@
-@import './variables';
-@import './reset';
+@import "./variables";
+@import "./reset";
 
-main {
-  padding: 20px;
-  color: #ddd;
+.header {
+  height: 15%;
+  display: flex;
+  justify-content: left;
+  &-logo {
+    height: 270px;
+    width: 100%;
+  }
 }
 
-// .list {
-//   display: flex;
-//   flex-wrap: wrap;
-//   cursor: pointer;
-//   align-content: flex-start;
-//   justify-content: center;
-// }
+.filter-name,
+.filter-specie {
+  text-align: center;
+  margin: 20px;
+}
+
+.title {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  @media all and (min-width: 768px) {
+    height: 100%;
+  }
+}
+
+.characters {
+  text-align: center;
+}
+
+.characters-list {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 40px;
+  grid-template-rows: auto;
+  row-gap: 40px;
+  @media all and (min-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: auto;
+  }
+}
+.characters-list__item {
+  width: 300px;
+  border-radius: 20px;
+  background-color: #27caca;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.character__image {
+  border-radius: 20px;
+}
+
+.character__title {
+  text-decoration: none;
+  color: white;
+}
+
+.character__specie {
+  color: white;
+}
+
+.character-detail-container {
+  padding-top: 60px;
+  height: 60vh;
+  margin: auto;
+  text-align: center;
+}
+
+.character-detail {
+  background-color: #27caca;
+  text-align: center;
+  margin: auto;
+  max-width: 500px;
+  display: flex;
+}
+
+.list-detail {
+  list-style-type: none;
+  border-radius: 20px;
+}
+
+.list-detail {
+  color: white;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 20%;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    height: 80px;
+    padding-left: 41px;
+  }
+  &-small {
+    font-size: 14px;
+    line-height: 20px;
+    padding-top: 18px;
+    @media (min-width: 768px) {
+      padding-top: 0;
+    }
+  }
+  &-logo {
+    margin-top: 12px;
+    width: 50px;
+    @media (min-width: 768px) {
+      padding: 10px 40px 10px 0;
+      margin-top: 0;
+    }
+  }
+}

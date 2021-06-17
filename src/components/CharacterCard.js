@@ -4,10 +4,10 @@ import React from "react";
 function CharacterCard(props) {
   return (
     <Link to={`/character/${props.character.id}`}>
-      <article className="">
-        <img src={props.character.image} alt="" />
-        <h3>{props.character.name}</h3>
-        <p>{props.character.species}</p>
+      <article className="characters-list__item-data">
+        <img className="character__image" src={props.character.image} alt="" />
+        <h3 className="character__title">{props.character.name}</h3>
+        <p className="character__specie">{props.character.species}</p>
       </article>
     </Link>
   );

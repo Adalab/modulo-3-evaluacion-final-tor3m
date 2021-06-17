@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 function FilterBySpecies(props) {
   const handleChange = (ev) => {
@@ -9,18 +9,18 @@ function FilterBySpecies(props) {
   };
 
   return (
-    <>
-      <label className="" htmlFor="species">
-        <input
-          className="input-text-species"
-          type="text"
-          name="species"
-          id="species"
-          value={props.filterSpecie}
-          onChange={handleChange}
-        />
-      </label>
-    </>
+    <div className="filter-specie">
+      <label  htmlFor="species"></label>
+      <input
+        className="input-text-species"
+        type="text"
+        name="species"
+        id="species"
+        placeholder="  Filtrar por especie"
+        value={props.filterSpecie}
+        onChange={handleChange}
+      />
+    </div>
   );
 }
 

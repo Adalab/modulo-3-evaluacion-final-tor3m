@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 function FilterByName(props) {
   const handleChange = (ev) => {
@@ -9,18 +9,18 @@ function FilterByName(props) {
   };
 
   return (
-    <>
-      <label className="" htmlFor="name">
-        <input
-          className="input-text-name"
-          type="text"
-          name="name"
-          id="name"
-          value={props.filterName}
-          onChange={handleChange}
-        />
-      </label>
-    </>
+    <div className="filter-name">
+      <label htmlFor="name"> </label>
+      <input
+        className="input-text-name"
+        type="text"
+        name="name"
+        id="name"
+        placeholder="  Filtrar por nombre"
+        value={props.filterName}
+        onChange={handleChange}
+      />
+    </div>
   );
 }
 
